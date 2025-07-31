@@ -1,0 +1,511 @@
+@use "variables" as vars;
+@use "mixins" as mx;
+
+.toolbar {
+  position: fixed;
+  bottom: 20px;
+  background-color: vars.$light-color;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  gap: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  border: 1px solid vars.$block-bg-color;
+  left: 50%;
+  transform: translate(-50%);
+
+  @media (max-width: 768px) {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    padding: 8px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    transform: none;
+  }
+
+  &__button {
+    background-color: vars.$accent-color-1;
+    color: vars.$light-color;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    @media (max-width: 768px) {
+      padding: 6px 12px;
+      font-size: 11px;
+      min-width: 70px;
+    }
+
+    @media (max-width: 480px) {
+      flex: 1;
+      min-width: auto;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: vars.$accent-color-2;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(40, 217, 121, 0.3);
+    }
+
+    &:disabled {
+      background-color: vars.$text-second-light-grey-color;
+      color: vars.$text-second-dark-grey-color;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    &--secondary {
+      background-color: vars.$block-bg-color;
+      color: vars.$dark-color;
+
+      &:hover:not(:disabled) {
+        background-color: vars.$text-second-light-grey-color;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    &--loading {
+      padding-left: 40px;
+
+      @media (max-width: 768px) {
+        padding-left: 32px;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 14px;
+        height: 14px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-top: 2px solid vars.$light-color;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+
+        @media (max-width: 768px) {
+          left: 8px;
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+
+    &--secondary.toolbar__button--loading::before {
+      border: 2px solid rgba(0, 0, 0, 0.3);
+      border-top: 2px solid vars.$dark-color;
+    }
+  }
+
+  &__icon {
+    font-size: 12px;
+
+    @media (max-width: 768px) {
+      font-size: 11px;
+    }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
+
+// Ripple effect for toolbar buttons
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+// Notification styles
+.notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-100px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1001;
+  font-weight: 500;
+  max-width: 350px;
+  border-left: 4px solid;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+
+  @media (max-width: 768px) {
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    top: 10px;
+    font-size: 13px;
+    padding: 12px 16px;
+  }
+
+  &--success {
+    background-color: vars.$accent-color-1;
+    color: vars.$light-color;
+    border-left-color: vars.$accent-color-2;
+  }
+
+  &--error {
+    background-color: #ff4d4d;
+    color: vars.$light-color;
+    border-left-color: #e63946;
+  }
+
+  &--info {
+    background-color: #4a90e2;
+    color: vars.$light-color;
+    border-left-color: #357abd;
+  }
+
+  &--warning {
+    background-color: #f5a623;
+    color: vars.$light-color;
+    border-left-color: #e8940f;
+  }
+
+  &.show {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &--success.show {
+    animation: slideInBounce 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+}
+
+@keyframes slideInBounce {
+  0% {
+    transform: translateY(-100px) scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(10px) scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+[contenteditable="true"] {
+  border: none;
+  outline: 1px solid transparent;
+  //   padding: 4px;
+  border-radius: 2px;
+  color: vars.$dark-color!important;
+  background-color: vars.$light-color;
+  transition: all 0.2s ease;
+
+  &:hover {
+    outline-color: vars.$accent-color-1;
+    background-color: vars.$text-second-light-color;
+  }
+
+  &:focus {
+    outline-color: vars.$accent-color-1;
+    background-color: vars.$light-color;
+    box-shadow: 0 0 0 2px rgba(40, 217, 121, 0.2);
+  }
+}
+
+.editing-mode {
+  .wrapper {
+    border: 2px dashed vars.$accent-color-1;
+    border-radius: 12px;
+    position: relative;
+    padding: 20px;
+    box-sizing: content-box;
+
+    @media (max-width: 768px) {
+      padding: 15px;
+    }
+
+    @media (max-width: 555px) {
+      box-sizing: border-box;
+    }
+
+    &::before {
+      content: "Editing Mode";
+      position: absolute;
+      top: -10px;
+      left: 16px;
+      background-color: vars.$accent-color-1;
+      color: vars.$light-color;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-family: "Poppins", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+
+      @media (max-width: 768px) {
+        left: 12px;
+        font-size: 9px;
+      }
+    }
+  }
+
+  //   .center {
+  //     @media (max-width: 768px) {
+  //       padding-bottom: 80px; // Account for toolbar height on mobile
+  //     }
+  //   }
+}
+
+// Modal styles
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.show .modal {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.modal {
+  background-color: vars.$light-color;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: scale(0.8);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid vars.$block-bg-color;
+
+  @media (max-width: 480px) {
+    padding: 20px;
+    margin: 20px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+
+    &-icon {
+      font-size: 24px;
+      color: #f5a623;
+    }
+
+    &-title {
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: vars.$dark-color;
+      margin: 0;
+
+      @media (max-width: 480px) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__content {
+    margin-bottom: 24px;
+
+    &-text {
+      font-family: "Poppins", sans-serif;
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 1.5;
+      color: vars.$text-second-dark-grey-color;
+      margin: 0;
+
+      @media (max-width: 480px) {
+        font-size: 13px;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+
+    @media (max-width: 480px) {
+      flex-direction: column-reverse;
+      gap: 8px;
+    }
+  }
+
+  &__button {
+    background-color: vars.$block-bg-color;
+    color: vars.$dark-color;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-width: 100px;
+
+    @media (max-width: 480px) {
+      width: 100%;
+      padding: 12px;
+    }
+
+    &:hover {
+      background-color: vars.$text-second-light-grey-color;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &--primary {
+      background-color: #ff4d4d;
+      color: vars.$light-color;
+
+      &:hover {
+        background-color: #e63946;
+        box-shadow: 0 4px 12px rgba(255, 77, 77, 0.3);
+      }
+    }
+
+    &--accent {
+      background-color: vars.$accent-color-1;
+      color: vars.$light-color;
+
+      &:hover {
+        background-color: vars.$accent-color-2;
+        box-shadow: 0 4px 12px rgba(40, 217, 121, 0.3);
+      }
+    }
+  }
+}
+
+// Hide toolbar and other UI elements in PDF/print
+@media print {
+  .toolbar,
+  .notification,
+  .modal-overlay {
+    display: none !important;
+  }
+
+  .editing-mode .wrapper {
+    border: none !important;
+    padding: 0 !important;
+
+    &::before {
+      display: none !important;
+    }
+  }
+
+  [contenteditable="true"] {
+    outline: none !important;
+    border: none !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
+  body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .center {
+    padding: 10px !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 15px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  // Ensure elements don't break across pages
+  .box,
+  .profile-info,
+  .lang,
+  .experience,
+  .tool,
+  .education,
+  .interests,
+  .contact {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  // Reduce font sizes slightly for PDF
+  .profile-info__block-name {
+    font-size: 13px !important;
+  }
+
+  .lang__title,
+  .experience__title,
+  .tool__title,
+  .education__title,
+  .interests__title {
+    font-size: 13px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .card,
+  .experience__card {
+    margin-bottom: 8px !important;
+  }
+}

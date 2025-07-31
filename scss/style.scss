@@ -1,5 +1,6 @@
 @use "variables" as vars;
 @use "mixins" as mx;
+@use "toolbar";
 
 // @use "components/typography";
 // @use "components/buttons";
@@ -68,7 +69,8 @@
 .center {
   margin: 0 auto;
   padding: 15px 20px;
-  width: min-content;
+  width: 595px;
+  margin-bottom: 80px;
 }
 
 .wrapper {
@@ -86,6 +88,7 @@
 .profile-img {
   @extend %rounded-corners;
   width: 124px;
+  aspect-ratio: 1 / 1;
 }
 
 .profile-info {
@@ -155,6 +158,10 @@
       height: 11px;
       border-radius: 3px;
       @extend %block-accent-bg;
+
+      &--short {
+        width: 80%;
+      }
     }
   }
 }
@@ -436,15 +443,65 @@
   gap: 20px;
 }
 
-[contenteditable="true"] {
-  outline: none;
-  border: 1px solid transparent;
-  padding: 4px;
-  border-radius: 6px;
-  background-color: vars.$light-color;
+@media screen and (max-width: 595px) {
+  .center {
+    width: unset;
+  }
+  .wrapper {
+    width: 100%;
+  }
 
-  &:hover {
-    border-color: vars.$accent-color-1;
-    background-color: black;
+  .profile-info,
+  .lang,
+  .experience,
+  .tool,
+  .education,
+  .interests,
+  .contact {
+    width: unset;
+    flex: auto;
+  }
+
+  .job {
+    flex-direction: column;
+  }
+
+  .tool__wrapper {
+    gap: 12px;
+  }
+
+  %block-title {
+    text-align: center;
+  }
+
+  .stat {
+    gap: 17px;
+
+    &__bar {
+      flex-grow: 1;
+
+      &-elem {
+        width: unset;
+        min-width: 168px;
+      }
+    }
   }
 }
+
+
+.stat__bar-elem--short {
+        width: 76%;
+      }
+
+// [contenteditable="true"] {
+//   outline: none;
+//   border: 1px solid transparent;
+//   padding: 4px;
+//   border-radius: 6px;
+//   background-color: vars.$light-color;
+
+//   &:hover {
+//     border-color: vars.$accent-color-1;
+//     background-color: black;
+//   }
+// }
