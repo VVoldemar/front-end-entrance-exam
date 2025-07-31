@@ -1,13 +1,289 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>CV</title>
   </head>
   <body>
-    <div id="app"></div>
+    <!-- <div class="app" id="app"></div> -->
+    <main class="center">
+      <div class="wrapper">
+        <img src="src/img/profile.png" alt="" class="profile-img box" />
+        <div class="profile-info box">
+          <p class="profile-info__greeting">Hello 👋🏻 I’m</p>
+          <div class="profile-info__block">
+            <h1 class="profile-info__block-name">Karthik SR</h1>
+            <p class="profile-info__block-job">UX/UI Designer</p>
+          </div>
+        </div>
+        <div class="lang">
+          <h2 class="lang__title">Languages</h2>
+          <div class="stat">
+            <div class="stat__title">
+              <p class="stat__title-elem">English</p>
+              <p class="stat__title-elem">Malayalam</p>
+              <p class="stat__title-elem">Hindi</p>
+            </div>
+            <div class="stat__bar">
+              <div class="stat__bar-elem"></div>
+              <div class="stat__bar-elem"></div>
+              <div class="stat__bar-elem"></div>
+            </div>
+          </div>
+        </div>
+        <div class="experience">
+          <h2 class="experience__title">Experience</h2>
+          <article class="experience__card experience__card--accent">
+            <div class="experience__card-header">
+              <p class="experience__card-header-date">Jun. 2023 - Present</p>
+              <div class="tag">
+                <span class="tag__content">most recent</span>
+              </div>
+            </div>
+            <div class="experience__card-content">
+              <div class="job">
+                <div class="job__info">
+                  <h3 class="job__info-title">Marketing Manager</h3>
+                  <p class="job__info-notes">Pankayam | Full-time</p>
+                </div>
+                <div class="job__descr">
+                  <ul class="job__descr-list">
+                    <li class="job__descr-list-item">
+                      Strategy development and planning of campaigns that
+                      promote the business and generate genuine traffic
+                    </li>
+                    <li class="job__descr-list-item">
+                      SEO Content Creation for Blogs, Website, Social media
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="experience__card">
+            <div class="experience__card-header">
+              <p class="experience__card-header-date">2017 - Present</p>
+            </div>
+            <div class="experience__card-content">
+              <div class="job">
+                <div class="job__info">
+                  <h3 class="job__info-title">Graphic / Web designer</h3>
+                  <p class="job__info-notes">Freelance</p>
+                </div>
+                <div class="job__descr">
+                  <ul class="job__descr-list">
+                    <li class="job__descr-list-item">
+                      Development of internal projects from scratch, product
+                      design of brands
+                    </li>
+                    <li class="job__descr-list-item">
+                      Landing page, webapps and hybrid apps
+                    </li>
+                    <li class="job__descr-list-item">
+                      Coordinating with outside agencies, art services, web
+                      designer, marketing, printers, and colleagues as
+                      necessary.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="experience__card">
+            <div class="experience__card-header">
+              <p class="experience__card-header-date">Sep. 2021 - Jun. 2023</p>
+            </div>
+            <div class="experience__card-content">
+              <div class="job">
+                <div class="job__info">
+                  <h3 class="job__info-title">Legal Assistant</h3>
+                  <p class="job__info-notes">Law Firm | Intern</p>
+                </div>
+                <div class="job__descr">
+                  <ul class="job__descr-list">
+                    <li class="job__descr-list-item">
+                      Provide administrative support to lawyer and enhance
+                      office effectiveness
+                    </li>
+                    <li class="job__descr-list-item">
+                      Handle communication with clients, witnesses etc.
+                    </li>
+                    <li class="job__descr-list-item">
+                      Repare case briefs and summarize depositions,
+                      interrogatories and testimony
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="tool">
+          <h2 class="tool__title">Tools</h2>
+          <div class="tool__wrapper">
+            <div class="tool__card">
+              <span class="tool__card-name">design</span>
+              <img src="src/img/logoFigma.svg" alt="" class="tool__card-elem" />
+              <img
+                src="src/img/logoPhotoshop.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img
+                src="src/img/logoIllustrator.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img
+                src="src/img/adobePremiere.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img
+                src="src/img/logoNotion.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img src="src/img/logoMeet.svg" alt="" class="tool__card-elem" />
+            </div>
+            <div class="tool__card">
+              <span class="tool__card-name">no-code</span>
+              <img
+                src="src/img/logoZapier.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img
+                src="src/img/logoWebflow.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img
+                src="src/img/logoFramer.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <div class="tool__card-elem"></div>
+            </div>
+            <div class="tool__card">
+              <span class="tool__card-name">artificial intelligence</span>
+              <img
+                src="src/img/logoChatGPT.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img
+                src="src/img/logoCopilot.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <img
+                src="src/img/logoMidjourney.svg"
+                alt=""
+                class="tool__card-elem"
+              />
+              <div class="tool__card-elem"></div>
+            </div>
+          </div>
+        </div>
+        <div class="education">
+          <h2 class="education__title">Education</h2>
+          <div class="education__content">
+            <div class="education__content-column">
+              <div class="card card--accent">
+                <div class="card__header">
+                  <p class="card__header-content">2023</p>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__main-title">UI/UX</h3>
+                  <p class="card__main-content">
+                    #UX #UI #research #DesignSystem #Ui #wireframing #figma #Ux
+                  </p>
+                </div>
+                <p class="card__footer">Coursera</p>
+              </div>
+              <div class="card">
+                <div class="card__header">
+                  <p class="card__header-content">2017</p>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__main-title">Graphic design</h3>
+                  <p class="card__main-content">
+                    #branding #web #illustration #adobe
+                  </p>
+                </div>
+                <p class="card__footer">Coursera</p>
+              </div>
+            </div>
+            <div class="education__content-column">
+              <div class="card">
+                <div class="card__header">
+                  <p class="card__header-content">2017 - 2022</p>
+                </div>
+                <div class="card__main">
+                  <h3 class="card__main-title">Law</h3>
+                  <p class="card__main-content">
+                    #law #legalStudies #contracts #internationalLaws
+                  </p>
+                </div>
+                <p class="card__footer">University of Kerala</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block-wrapper">
+          <div class="interests">
+            <h2 class="interests__title">Interests</h2>
+            <div class="interests__chips">
+              <div class="chip">
+                <span class="chip__content">branding</span>
+              </div>
+              <div class="chip"><span class="chip__content">design</span></div>
+              <div class="chip">
+                <span class="chip__content">photography</span>
+              </div>
+              <div class="chip">
+                <span class="chip__content">artificial intelligence</span>
+              </div>
+              <div class="chip">
+                <span class="chip__content">illustration</span>
+              </div>
+              <div class="chip">
+                <span class="chip__content">typography</span>
+              </div>
+              <div class="chip">
+                <span class="chip__content">social networks</span>
+              </div>
+              <div class="chip">
+                <span class="chip__content">research</span>
+              </div>
+              <div class="chip">
+                <span class="chip__content">dron pilot</span>
+              </div>
+              <div class="chip"><span class="chip__content">games</span></div>
+            </div>
+          </div>
+          <div class="contact">
+            <p class="contact__text">
+              Let´s chat! I´m ready to work on excinting projects
+            </p>
+            <a
+              href="mailto:srkarthik.designscape@gmail.com"
+              class="contact__email"
+              >srkarthik.designscape@gmail.com</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
     <script type="module" src="./js/main.js"></script>
   </body>
 </html>

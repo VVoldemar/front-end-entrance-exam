@@ -1,0 +1,6 @@
+@use "variables" as vars;
+
+@mixin block-accent {
+  background-color: vars.$accent-color-1;
+  color: vars.$light-color;
+}
